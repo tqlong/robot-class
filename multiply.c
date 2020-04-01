@@ -88,7 +88,7 @@ int main()
 {
     // Tinh 891239872398723984719239384579385 * 817263871643958039458
     // 1. Nhap, tach so, dua vao mang
-    // 2. Cong
+    // 2. Nhan
     // 3. In ra
     int num1[200], num2[200], num3[200];
     int n1 = input_number(num1);
