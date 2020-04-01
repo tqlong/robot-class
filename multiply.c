@@ -46,6 +46,10 @@ int multiply_digit(int num[], int n, int digit, int unit, int result[])
 {
     // Input: (num, n) so can nhan, digit: chu so can nhan, unit: hang cua digit
     // Ouput: result: cac chu so, return so chu so
+    // 125
+    // 200
+    // multiply_digit(521, 3, 2, 2, ...)
+    // result 00052
     int i = 0, remember = 0;
     for (int j = 0; j < unit; j++)
         result[j] = 0;
@@ -53,11 +57,11 @@ int multiply_digit(int num[], int n, int digit, int unit, int result[])
     while (i < n || remember > 0) {
         int x = (i < n) ? num[i] : 0;
         x = x * digit + remember;
-        result[i + unit] = x % 10;
+        result[i + unit] = x % 10; // dich phai unit don vi
         remember = x / 10;
         i++;
     }
-    return i+unit;
+    return i+unit; // dich phai unit don vi
 }
 
 int multiply(int num1[], int n1, int num2[], int n2, int num3[])
