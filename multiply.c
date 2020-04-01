@@ -96,7 +96,7 @@ int main()
     int n3;
     
     print_number(num1, n1);
-    printf("+\n");
+    printf("*\n");
     print_number(num2, n2);
 
     n3 = multiply(num1, n1, num2, n2, num3);
