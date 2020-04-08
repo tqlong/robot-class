@@ -12,10 +12,10 @@ int generate_ring(int a[100][100], int top, int left, int bottom, int right, int
     // input: mang, goc trai tren, phai duoi cua hinh chu nhat, so dau tien
     // output: dien so vao vien cua hinh chu nhat
     // return: so can dien tiep theo
-    for (int j = left; j <= right; j++) a[top][j] = start_value++;
-    for (int i = top+1; i <= bottom; i++) a[i][right] = start_value++;
-    for (int j = right-1; top < bottom && j >= left; j--) a[bottom][j] = start_value++;
-    for (int i = bottom-1; left < right && i >= top+1; i--) a[i][left] = start_value++;
+    for (int j = left; j <= right; j++) a[top][j] = start_value++; // move_right()
+    for (int i = top+1; i <= bottom; i++) a[i][right] = start_value++; // move_down()
+    for (int j = right-1; top < bottom && j >= left; j--) a[bottom][j] = start_value++; // move_left()
+    for (int i = bottom-1; left < right && i >= top+1; i--) a[i][left] = start_value++; // move_up()
     return start_value;
 }
 
