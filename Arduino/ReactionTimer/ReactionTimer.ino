@@ -11,7 +11,7 @@
 
 int pin_no[] = {13, 3, 12, 11};
 int n_led = 4;
-unsigned int waitTime, startTime, reactTime;
+unsigned int waitTime, startTime, reactTime, bestReactionTime = 0;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
@@ -49,14 +49,17 @@ void loop() {
 
   reactTime = millis() - startTime;
   turn_led(LED, OFF);
-  if (reactTime <= 300) {
+  if (reactTime <= bestReactionTime || bestReactionTime == 0) {
     turn_led(GREEN, ON);
     turn_led(RED, OFF);
+    bestReactionTime = reactTime;
   } else {
     turn_led(RED, ON);
     turn_led(GREEN, OFF);
   }
   Serial.print("Nice job! Your reaction time was ");
   Serial.print(reactTime);
+  Serial.print(" milliseconds. Current best reaction time is ");
+  Serial.print(bestReactionTime);
   Serial.println(" milliseconds.");
 }
