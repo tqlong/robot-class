@@ -1,3 +1,4 @@
+#include <Servo.h>
 
 #define PHOTORESISTOR 0
 #define RED 0
@@ -5,14 +6,17 @@
 #define GREEN 2
 #define ON true
 #define OFF false
+#define SERVO_PIN 3
 
 int analog_pin[] = {A0};
 int digital_pin[] = {9, 11, 10};
+Servo servo;
 
 void setup() {
 //  pinMode(digital_pin[RED], OUTPUT);
 //  pinMode(digital_pin[GREEN], OUTPUT);
 //  pinMode(digital_pin[BLUE], OUTPUT);
+  servo.attach(SERVO_PIN);
   Serial.begin(9600);
 }
 
@@ -41,6 +45,9 @@ void loop() {
   color = map(color, 0, 1023, 0, 255); // map color to [0,255] range
   show_RGB(color, color, color); // show the light using show_RGB() utility function
   Serial.println(voltage);
-  delay(100);
+
+  int angle = map(voltage, 0, 1023, 20, 160);
+  servo.write(angle);
+  delay(50);
 
 }
