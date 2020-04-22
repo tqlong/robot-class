@@ -28,6 +28,7 @@ void turn(int pin_index, bool on)
 
 void show_RGB(int r, int g, int b)
 {
+  // use PWM to write color value to RED, GREEN, BLUE pins
   analogWrite(digital_pin[RED], r);
   analogWrite(digital_pin[GREEN], g);
   analogWrite(digital_pin[BLUE], b);
@@ -35,9 +36,9 @@ void show_RGB(int r, int g, int b)
 
 void loop() {
   int voltage = read_photoresistor();
-  int color = 1023 - voltage;
-  color = map(color, 0, 1023, 0, 255);
-  show_RGB(color, color, color);
+  int color = 1023 - voltage; // more light when dark
+  color = map(color, 0, 1023, 0, 255); // map color to [0,255] range
+  show_RGB(color, color, color); // show the light using show_RGB() utility function
   Serial.println(voltage);
   delay(1000);
 
